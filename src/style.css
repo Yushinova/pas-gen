@@ -1,0 +1,11 @@
+ .main-div{
+    width: 340px;
+    background: linear-gradient(rgb(159, 247, 239), rgb(159, 255, 164));
+    border-radius: 15px;
+}
+.form-check, .form-control, .btn{
+    width: 50%;
+}
+.combinations{
+    width: 100%;
+}

@@ -1,0 +1,9 @@
+
+services:
+  php:
+    container_name: passgen
+    image: php:8.2-apache
+    volumes:
+      - ./src/:/var/www/html/
+    ports:
+      - "8080:80"
