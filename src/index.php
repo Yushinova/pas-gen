@@ -35,12 +35,14 @@
         $specialSymbols="";
         $isSpecialSymbols = false;
       }
+      $lenght = $_GET["lenght"];
       $requiredSymbols = $_GET["requiredSymbols"];
       $exludedSymbols = $_GET["exludedSymbols"];
       $characterPool=$numbers.$lowercase.$uppercase.$specialSymbols;
       $excludedCombinations = explode(",", $_GET["excludedCombinations"]);
       $password = generatePassword($_GET["lenght"], $_GET["requiredSymbols"], $_GET["exludedSymbols"], $characterPool, ...$excludedCombinations);
         if($password=== null){
+          $password="";
           $error="Ошибка ввода данных!";
         }
         
@@ -92,19 +94,19 @@
           </label>
         </div>
         <div class="form-text">
-          <input class="form-control mx-auto" type="text" name="requiredSymbols" value = <?= $requiredSymbols ?>>
+          <input class="form-control mx-auto" type="text" name="requiredSymbols" value = <?= htmlspecialchars($requiredSymbols) ?>>
           <label class="form-label" for="requiredSymbols">
             Обязательные символы
           </label>
         </div> 
         <div class="form-text">
-          <input class="form-control mx-auto" type="text" name="exludedSymbols" value = <?= $exludedSymbols ?>>
+          <input class="form-control mx-auto" type="text" name="exludedSymbols" value = <?= htmlspecialchars($exludedSymbols) ?>>
           <label class="form-label" for="exludedSymbols">
             Запрещенные символы
           </label>
         </div> 
         <div class="form-text combinations">
-          <input class="form-control mx-auto combinations" type="text" name="excludedCombinations" value = <?php echo join(",", $excludedCombinations) ?>>
+          <input class="form-control mx-auto combinations" type="text" name="excludedCombinations" value = <?php echo htmlspecialchars(join(",", $excludedCombinations)) ?>>
           <label class="form-label" for="excludedCombinations" >
           Введите заперщенные слова через запятую
           </label>
@@ -115,7 +117,7 @@
 </form>
 
  <h5><label class="my-2">Ваш пароль:</label></h5> 
- <span class="my-2" name="password"><?= $password ?></span>
+ <span class="my-2" name="password"><?= htmlspecialchars($password) ?></span>
   <span class="my-2" name="error"><?= $error ?></span>
  <br><br>
 </div>
